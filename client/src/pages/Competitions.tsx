@@ -53,8 +53,8 @@ export default function Competitions() {
   });
 
   const joinCompetitionMutation = useMutation({
-    mutationFn: async (competitionId: number) => {
-      return await apiRequest(`/api/competitions/${competitionId}/join`, 'POST');
+   mutationFn: async (competitionId: number) => {
+      return await apiRequest('POST', `/api/competitions/${competitionId}/join`);
     },
     onSuccess: () => {
       toast({

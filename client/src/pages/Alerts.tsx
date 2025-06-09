@@ -40,7 +40,7 @@ export default function Alerts() {
 
   const createAlertMutation = useMutation({
     mutationFn: async (alertData: any) => {
-      return await apiRequest('/api/alerts', 'POST', alertData);
+      return await apiRequest('POST','/api/alerts', alertData);
     },
     onSuccess: () => {
       toast({
@@ -62,7 +62,7 @@ export default function Alerts() {
 
   const deleteAlertMutation = useMutation({
     mutationFn: async (alertId: number) => {
-      return await apiRequest(`/api/alerts/${alertId}`, 'DELETE');
+      return await apiRequest('DELETE', `/api/alerts/${alertId}`);
     },
     onSuccess: () => {
       toast({
@@ -82,7 +82,7 @@ export default function Alerts() {
 
   const toggleAlertMutation = useMutation({
     mutationFn: async ({ alertId, isActive }: { alertId: number; isActive: boolean }) => {
-      return await apiRequest(`/api/alerts/${alertId}/toggle`, 'PUT', { is_active: isActive });
+      return await apiRequest('PUT', `/api/alerts/${alertId}/toggle`, { is_active: isActive });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/alerts'] });
@@ -318,7 +318,7 @@ export default function Alerts() {
                   onChange={(e) => setSelectedStock(e.target.value)}
                   className="trading-input w-full"
                 >
-                  <option value="">Select a stock</option>
+                  <option value="" disabled>Select stocks</option>
                   {stocks?.map((stock) => (
                     <option key={stock.stock_id} value={stock.stock_id}>
                       {stock.symbol} - {stock.company_name}
@@ -334,9 +334,13 @@ export default function Alerts() {
                   onChange={(e) => setAlertType(e.target.value)}
                   className="trading-input w-full"
                 >
-                  <option value="PRICE">Price Alert</option>
-                  <option value="VOLUME">Volume Alert</option>
-                  <option value="CHANGE">Price Change Alert</option>
+                  <option value="" disabled>Select alert type</option>
+                  <option value="VOLUME_SPIKE">Volume Spike</option>
+                  <option value="PRICE_LOW">Price Low</option>
+                  <option value="PRICE_HIGH">Price High</option>
+              
+                  <option value="NEWS">News</option>
+        
                 </select>
               </div>
 

@@ -36,7 +36,7 @@ export default function Recommendations() {
 
   const followRecommendationMutation = useMutation({
     mutationFn: async (recommendationId: number) => {
-      return await apiRequest(`/api/recommendations/${recommendationId}/follow`, 'POST');
+      return await apiRequest('POST', `/api/recommendations/${recommendationId}/follow`);
     },
     onSuccess: () => {
       toast({
