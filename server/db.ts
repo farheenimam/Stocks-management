@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-dotenv.config(); // 👈 Load environment variables early
+dotenv.config(); // 
 
 // ... other imp
 import { Pool, neonConfig } from '@neondatabase/serverless';

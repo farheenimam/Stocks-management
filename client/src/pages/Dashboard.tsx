@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Charts } from "@/components/Charts";
 import { useEffect } from "react";
+import { Link } from "wouter";
 
 interface Transaction {
   transaction_id: number;
@@ -82,13 +83,27 @@ export default function Dashboard() {
   return (
     <div className="p-6">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">
-          Welcome back, {user.first_name || user.username}!
-        </h1>
-        <p className="text-muted-foreground">
-          Here's your portfolio overview for today.
-        </p>
+      <div className="mb-8 flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            Welcome back, {user.first_name || user.username}!
+          </h1>
+          <p className="text-muted-foreground">
+            Here's your portfolio overview for today.
+          </p>
+        </div>
+        
+        {/* Quick Actions */}
+        <div className="flex gap-3">
+          <Link href="/tables">
+            <button className="trading-button-secondary px-4 py-2 text-sm font-medium">
+              <svg className="w-4 h-4 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18m-9 8h9m-9 4h9" />
+              </svg>
+              View Tables
+            </button>
+          </Link>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -145,6 +160,80 @@ export default function Dashboard() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <Charts />
+      </div>
+
+      {/* Quick Access Section */}
+      <div className="trading-card mb-8">
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-foreground mb-2">Quick Access</h3>
+          <p className="text-sm text-muted-foreground">Navigate to different sections of your trading platform</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link href="/tables">
+            <div className="p-4 rounded-lg border border-border hover:border-primary transition-colors cursor-pointer group">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18m-9 8h9m-9 4h9" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-medium text-foreground">Tables Overview</h4>
+                  <p className="text-xs text-muted-foreground">View data tables</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+          
+          <Link href="/portfolio">
+            <div className="p-4 rounded-lg border border-border hover:border-primary transition-colors cursor-pointer group">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-success-green/10 flex items-center justify-center group-hover:bg-success-green/20 transition-colors">
+                  <svg className="w-5 h-5 text-success-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-medium text-foreground">Portfolio</h4>
+                  <p className="text-xs text-muted-foreground">Manage holdings</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+          
+          <Link href="/stocks">
+            <div className="p-4 rounded-lg border border-border hover:border-primary transition-colors cursor-pointer group">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-sky-blue/10 flex items-center justify-center group-hover:bg-sky-blue/20 transition-colors">
+                  <svg className="w-5 h-5 text-sky-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-medium text-foreground">Stocks</h4>
+                  <p className="text-xs text-muted-foreground">Browse markets</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+          
+          <Link href="/analytics">
+            <div className="p-4 rounded-lg border border-border hover:border-primary transition-colors cursor-pointer group">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-accent-gold/10 flex items-center justify-center group-hover:bg-accent-gold/20 transition-colors">
+                  <svg className="w-5 h-5 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-medium text-foreground">Analytics</h4>
+                  <p className="text-xs text-muted-foreground">View insights</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
 
       {/* Recent Transactions */}

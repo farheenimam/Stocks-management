@@ -398,6 +398,55 @@ export class DatabaseStorage implements IStorage {
     return competitions;
   }
 
+   // Users1 operations
+  async getAllUsers(): Promise<any[]> {
+    const competitions = await db.select().from(users1).orderBy(users1.user_id);
+    return competitions;
+  }
+
+  // competition_participants operations
+  async getAllParticipants(): Promise<any[]> {
+    const competitions = await db.select().from(competition_participants).orderBy(competition_participants.participant_id);
+    return competitions;
+  }
+
+   // portfolio operations
+  async getAllPortfolio(): Promise<any[]> {
+    const competitions = await db.select().from(portfolio).orderBy(portfolio.portfolio_id);
+    return competitions;
+  }
+
+  // orders operations
+  async getAllOrders(): Promise<any[]> {
+    const competitions = await db.select().from(orders).orderBy(orders.order_id);
+    return competitions;
+  }
+
+  // transactions operations
+  async getAllTransactions(): Promise<any[]> {
+    const competitions = await db.select().from(transactions).orderBy(transactions.transaction_id);
+    return competitions;
+  }
+
+   // watchlists operations
+  async getAllWatchlists(): Promise<any[]> {
+    const competitions = await db.select().from(watchlists).orderBy(watchlists.watchlist_id);
+    return competitions;
+  }
+
+  // stock_alerts operations
+  async getAllStock_alerts(): Promise<any[]> {
+    const competitions = await db.select().from(stock_alerts).orderBy(stock_alerts.stock_id);
+    return competitions;
+  }
+
+  // user_subscriptions operations
+  async getAllUser_subscriptions(): Promise<any[]> {
+    const competitions = await db.select().from(user_subscriptions).orderBy(user_subscriptions.user_id);
+    return competitions;
+  }
+
+
   async getUserParticipations(userId: number): Promise<any[]> {
     const participations = await db
       .select({

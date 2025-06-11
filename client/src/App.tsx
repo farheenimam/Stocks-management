@@ -17,6 +17,8 @@ import Alerts from "@/pages/Alerts";
 import Recommendations from "@/pages/Recommendations";
 import Subscriptions from "@/pages/Subscriptions";
 import NotFound from "@/pages/not-found";
+import TablesOverview from "@/pages/TablesOverview";
+import TablesPage from "@/pages/TablesPage";
 
 // Components
 import Navigation from "@/components/Navigation";
@@ -77,6 +79,8 @@ function Router() {
           <Route path="/alerts" component={Alerts} />
           <Route path="/recommendations" component={Recommendations} />
           <Route path="/subscriptions" component={Subscriptions} />
+           <Route path="/tables" component={TablesOverview} />
+          <Route path="/tables/:tableName" component={TablesPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

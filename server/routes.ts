@@ -575,6 +575,126 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+   // Competitions routes
+  app.get('/api/tables/trading_competitions', async (req, res) => {
+    try {
+      const competitions = await storage.getAllCompetitions();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+   app.get('/api/tables/users1', async (req, res) => {
+    try {
+      const competitions = await storage.getAllUsers();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+  app.get('/api/tables/competition_participants', async (req, res) => {
+    try {
+      const competitions = await storage.getAllParticipants();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+  app.get('/api/tables/sectors', async (req, res) => {
+    try {
+      const competitions = await storage.getAllSectors();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+   app.get('/api/tables/stocks', async (req, res) => {
+    try {
+      const competitions = await storage.getAllStocks();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+   app.get('/api/tables/portfolio', async (req, res) => {
+    try {
+      const competitions = await storage.getAllStocks();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+   app.get('/api/tables/recommendations', async (req, res) => {
+    try {
+      const competitions = await storage.getAllRecommendations();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+  app.get('/api/tables/orders', async (req, res) => {
+    try {
+      const competitions = await storage.getAllOrders();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+    app.get('/api/tables/transactions', async (req, res) => {
+    try {
+      const competitions = await storage.getAllTransactions();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+     app.get('/api/tables/watchlists', async (req, res) => {
+    try {
+      const competitions = await storage.getAllWatchlists();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+    app.get('/api/tables/stock_alerts', async (req, res) => {
+    try {
+      const competitions = await storage.getAllStock_alerts();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
+    app.get('/api/tables/user_subscriptions', async (req, res) => {
+    try {
+      const competitions = await storage.getAllUser_subscriptions();
+      res.json(competitions);
+    } catch (error) {
+      console.error('Get competitions error:', error);
+      res.status(500).json({ message: "Failed to get competitions" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
